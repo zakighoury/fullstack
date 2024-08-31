@@ -1,0 +1,25 @@
+// Override Ant Design primary button styles
+.ant-btn-primary {
+  background-color: deepskyblue; // Custom background color for primary button
+  border-color: deepskyblue; // Custom border color for primary button
+  color: #fff; // Custom text color
+
+  &:hover,
+  &:focus {
+    background-color: deepskyblue !important; // Custom hover background color
+    border-color: deepskyblue !important; // Custom hover border color
+    color: #fff !important; // Ensure text color remains white
+  }
+
+  &:active {
+    background-color: deepskyblue !important; // Custom active background color
+    border-color: deepskyblue !important; // Custom active border color
+  }
+
+  &:disabled {
+    background-color: #ccc; // Custom background color for disabled state
+    color: #666; // Custom text color for disabled state
+    border-color: #ccc; // Custom border color for disabled state
+    cursor: not-allowed;
+  }
+}

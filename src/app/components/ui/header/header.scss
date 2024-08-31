@@ -1,0 +1,123 @@
+/* Variables */
+$primary-color: deepskyblue;
+$secondary-color: #fff;
+$background-color: #f5f5f5;
+
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: $background-color;
+}
+
+/* Header styles */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 25px;
+  background-color: $primary-color;
+  position: relative;
+  height: 100px;
+  z-index: 1000;
+
+  .logo img {
+    max-width: 300px;
+  }
+
+  nav {
+    ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+
+      li {
+        a {
+          color: $secondary-color;
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 1.8rem; /* Adjusted for better scaling on different devices */
+          letter-spacing: 2px;
+
+          &:hover {
+            color: darken($secondary-color, 20%);
+          }
+        }
+      }
+    }
+  }
+
+  .icons {
+    display: flex;
+    gap: 20px;
+    padding-right: 10px;
+
+    .anticon {
+      color: $secondary-color;
+      font-size: 2rem;
+      cursor: pointer;
+
+      &:hover {
+        color: darken($secondary-color, 10%);
+      }
+    }
+  }
+
+  /* Hamburger menu styles */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+
+    span {
+      display: block;
+      width: 100%;
+      height: 4px;
+      background-color: $secondary-color;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+  }
+
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    nav ul {
+      position: fixed;
+      top: -16px;
+      right: 0;
+      width: 250px;
+      height: 100%;
+      background-color: $primary-color;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px; /* Increase gap for better spacing */
+      padding: 60px 20px;
+      transform: translateX(100%);
+      //   transition: transform 0.1s ease;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3); /* Add shadow for better visibility */
+    }
+
+    .hamburger {
+      display: flex;
+    }
+
+    .nav-active {
+      transform: translateX(0);
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+  }
+}
