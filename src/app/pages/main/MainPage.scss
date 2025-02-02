@@ -1,0 +1,174 @@
+// Sidebar styles
+.sider {
+  background: hsl(0, 0%, 100%) !important;
+  // width: 300px !important;
+  // flex: 0 0 300px !important;
+  // max-width: 300px !important;
+  // min-width: 80px !important;
+
+  .avatar-section {
+    text-align: center;
+    padding: 20px 0;
+    background: linear-gradient(0deg, #f5f5f5 1%, #85f1e79e 219%);
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .ant-layout-sider-trigger {
+    font-size: 35px;
+    background: #ffffff !important;
+    color: #000 !important;
+    position: absolute !important; // Keep the trigger positioned relative to the sidebar
+    bottom: 40px; // Stick the trigger to the bottom of the sidebar
+    width: 100%; // Ensure it stretches across the full width of the sidebar
+  }
+
+  .ant-layout-sider-trigger {
+    font-size: 35px;
+    background: #ffffff !important;
+    color: #000 !important;
+  }
+
+  .user-name {
+    font-size: 2rem !important;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-top: 10px;
+  }
+
+  .menu {
+    border-right: 0;
+    background: #fff;
+    font-size: 1.7rem !important;
+    color: #000;
+
+    .ant-menu-item {
+      font-size: 1.7rem !important;
+      margin-bottom: 20px !important;
+    }
+
+    .ant-menu-item-selected {
+      background: #e6f7ff;
+      color: #1890ff;
+    }
+
+    .ant-menu-item-icon {
+      font-size: 1.7rem !important;
+      display: flex;
+      align-items: center;
+
+      svg {
+        width: 1.7rem;
+        height: 1.7rem;
+      }
+    }
+  }
+
+  .ant-avatar {
+    width: 130px;
+    height: 130px;
+    font-size: 2rem;
+    background: #fff;
+  }
+}
+
+// Content styles
+.content {
+  padding: 24px;
+  margin: 0;
+  min-height: 100%;
+  background: #fff;
+
+  // Media query for responsive content padding
+  @media (max-width: 768px) {
+    padding: 12px;
+  }
+}
+
+/* Media Queries */
+
+/* Phone view */
+@media (max-width: 576px) {
+  .sider {
+    width: 80px !important;
+    max-width: 80px !important;
+    .avatar-section {
+      padding: 10px 0;
+    }
+
+    .menu {
+      font-size: 1.1rem !important;
+
+      .ant-menu-item {
+        font-size: 1.1rem !important;
+        margin-bottom: 9px !important;
+      }
+
+      .ant-menu-item-icon {
+        font-size: 1.3rem !important;
+      }
+    }
+
+    .ant-avatar {
+      width: 65px;
+      height: 65px;
+      font-size: 1.3rem;
+    }
+  }
+}
+
+/* Tablet view */
+@media (min-width: 577px) and (max-width: 992px) {
+  .sider {
+    width: 200px !important;
+    max-width: 200px !important;
+    .avatar-section {
+      padding: 10px 0;
+    }
+
+    .menu {
+      font-size: 1.3rem !important;
+
+      .ant-menu-item {
+        font-size: 1.3rem !important;
+        margin-bottom: 12px !important;
+      }
+
+      .ant-menu-item-icon {
+        font-size: 1.5rem !important;
+      }
+    }
+
+    .ant-avatar {
+      width: 100px;
+      height: 100px;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+/* Desktop view */
+@media (min-width: 1201px) {
+  .sider {
+    .user-name {
+      font-size: 2.2rem !important;
+    }
+
+    .menu {
+      font-size: 1.8rem !important;
+
+      .ant-menu-item {
+        font-size: 1.8rem !important;
+        margin-bottom: 14px !important;
+      }
+
+      .ant-menu-item-icon {
+        font-size: 1.8rem !important;
+      }
+    }
+
+    .ant-avatar {
+      width: 140px;
+      height: 140px;
+      font-size: 2.2rem;
+    }
+  }
+}

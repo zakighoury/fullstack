@@ -1,8 +1,9 @@
 // app/layout.tsx
+import React from 'react';
 import { Inter } from "next/font/google";
-import "./globals.scss";
+import "./globals.scss"; // Import global SCSS styles
 import StoreProvider from "./StoreProvider";
-import { makeStore } from "../lib/store";
+import { AntdRegistry } from '@ant-design/nextjs-registry'; // Import Ant Design registry
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <StoreProvider>{children}</StoreProvider>
+        <AntdRegistry>
+          <StoreProvider>
+            {children}
+          </StoreProvider>
+        </AntdRegistry>
       </body>
     </html>
   );

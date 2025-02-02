@@ -1,0 +1,94 @@
+$primary-color: deepskyblue;
+
+.sider{
+  background: $primary-color !important;
+  width: 300px !important; 
+  flex: 0 0 300px !important;
+  max-width: 300px !important;
+  min-width: 80px !important;
+}
+.ant-layout{
+  font-size: 2rem !important;
+}
+.ant-layout-sider-trigger{
+  font-size: 35px;
+  background: $primary-color !important;
+}
+.ant-layout-sider-collapsed {
+  width: 80px !important;  // When collapsed, the width is set to 80px
+  max-width: 80px !important;
+}
+.anticon{
+  font-size: 2rem !important;
+}
+.ant-menu-title-content{
+  font-size: 2rem !important;
+}
+.ant-menu-item{
+  height: 60px !important;
+}
+.brand-logo {
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.avatar-container {
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+
+.user-name {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.menu {
+  // background: $primary-color !important;
+}
+
+.header {
+  background: $primary-color !important;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ant-layout-header{
+  height: 95px !important;
+}
+.header-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: ghostwhite;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  font-size: 2rem ;
+  color: white ;
+  margin-right: 20px ;
+  cursor: pointer ;
+
+  &:hover {
+    color: darken($primary-color, 10%);
+  }
+}
+
+.content {
+  margin: 16px;
+  padding: 24px;
+  background-color: #fff;
+  min-height: 100%;
+}

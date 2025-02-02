@@ -3,6 +3,8 @@ import User from "@/models/UserModel";
 import { NextRequest, NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
+import path from "path";
+import { json } from "stream/consumers";
 
 connectDB();
 
@@ -12,7 +14,7 @@ export async function POST(req: NextRequest) {
     console.log("Received login data:", { email });
 
     // Find user by email
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).select("-confirmPassword");
     if (!user) {
       return NextResponse.json(
         { error: "Invalid email or password" },
@@ -29,15 +31,19 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Update the user to set isVerified to true
+    user.isVerified = true;
+    await user.save();
+    console.log(user.isVerified, "isverified");
     // Create a JWT token
     const token = jwt.sign(
       { userId: user._id, email: user.email },
       process.env.JWT_SECRET || "yourSecretKey",
-      { expiresIn: "1h" }
+      { expiresIn: "1d" }
     );
 
     // Return the token and success message
-    return NextResponse.json(
+    const response = NextResponse.json(
       {
         message: "Login successful",
         token,
@@ -46,10 +52,12 @@ export async function POST(req: NextRequest) {
       },
       { status: 200 }
     );
+    response.cookies.set("token", token);
+    response.cookies.set("user", JSON.stringify(user));
+    response.cookies.set("isVerified", user.isVerified.toString());
+    return response;
   } catch (error: any) {
-    return NextResponse.json(
-      { error: error.message },
-      { status: 500 }
-    );
+    console.error(error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

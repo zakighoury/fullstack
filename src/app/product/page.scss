@@ -1,0 +1,96 @@
+// page.scss
+
+.product-detail {
+  // display: flex;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+
+  &__container {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  // Left: Thumbnails (4 images)
+  &__thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 200px;
+  }
+
+  &__thumbnail {
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border 0.3s ease;
+
+    &:hover {
+      border-color: #ccc;
+    }
+
+    &-img {
+      width: 200px;
+      height: 180px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    &.active {
+      border-color: #1890ff;
+    }
+  }
+
+  // Right: Main Image (Larger image in row)
+  &__main-image {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+
+    .product-detail__img {
+      max-height: 100%;
+      max-width: 100%;
+      width:400px;
+      // object-fit: cover;
+      height: 500px;
+      border-radius: 8px;
+    }
+  }
+
+  // Right: Product Info
+  &__info {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: flex-start;
+  }
+
+  &__options {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__description,
+  &__reviews {
+    margin-top: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__review {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+}

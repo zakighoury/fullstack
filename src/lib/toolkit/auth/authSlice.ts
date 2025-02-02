@@ -1,10 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import authThunks from "./authThunks"; // Adjust the import path as necessary
-
+import dayjs, { Dayjs } from "dayjs";
 interface User {
-  id: string;
+  _id: any;
+  avatar: string;
   name: string;
   email: string;
+  phonenumber: string;
+  role: string;
+  dateofbirth: string;
+  gender: string;
+  isVerified: boolean;
   // Add other user properties as needed
 }
 
@@ -27,7 +33,6 @@ const initialState: AuthState = {
   error: null,
 };
 
-// Update thunk payloads to use AuthPayload
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -100,6 +105,26 @@ const authSlice = createSlice({
         }
       )
 
+      // Handling updateProfile thunk
+      .addCase(authThunks.updateProfile.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(
+        authThunks.updateProfile.fulfilled,
+        (state, action: PayloadAction<User>) => {
+          state.loading = false;
+          state.user = action.payload;
+        }
+      )
+      .addCase(
+        authThunks.updateProfile.rejected,
+        (state, action: PayloadAction<any>) => {
+          state.loading = false;
+          state.error = action.payload || "Update failed";
+        }
+      )
+
       // Handling signOut thunk
       .addCase(authThunks.signOut.pending, (state) => {
         state.loading = true;
@@ -115,6 +140,29 @@ const authSlice = createSlice({
         (state, action: PayloadAction<any>) => {
           state.loading = false;
           state.error = action.payload || "Sign out failed";
+        }
+      )
+
+      // Handling updateAvatar thunk
+      .addCase(authThunks.updateAvatar.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(
+        authThunks.updateAvatar.fulfilled,
+        (state, action: PayloadAction<any>) => {
+          console.log("🚀 ~ action:", action);
+          state.loading = false;
+          if (state.user) {
+            state.user.avatar = action.payload;
+          }
+        }
+      )
+      .addCase(
+        authThunks.updateAvatar.rejected,
+        (state, action: PayloadAction<any>) => {
+          state.loading = false;
+          state.error = action.payload || "Failed to update avatar";
         }
       );
   },
